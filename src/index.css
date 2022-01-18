@@ -1,13 +1,60 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.button:hover,
+nav.navbar ul li a:hover,
+nav.navbar ul li:hover > a {
+    background: rgb(248, 215, 107);
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+.button {
+    display: inline-block;
+    padding: 0.6rem 1rem;
+    border-radius: 0.4rem;
+    text-decoration: none;
+    font-weight: bold;
+    background: cadetblue;
+    color: rgb(255, 255, 255);
+    border: none;
+    font-size: 1rem;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+a {
+    text-decoration: none;
+    display: inline-block;
 }
+
+nav.navbar ul li a {
+    display: block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.4rem;
+    text-decoration: none;
+    font-weight: bold;
+    background: cadetblue;
+    color: rgb(255, 255, 255);
+}
+
+#container {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 0;
+}
+
+footer {
+    margin-top:auto;
+    text-align: center;
+    background: linear-gradient(to right,#ff1d25 5%,#a0328c 35%,#7040a4 45%,#4359c7 55%,#0082e6 70%);
+
+  }
+
+  footer p {
+    padding: 1rem 0;
+    font-weight: bold;
+    margin: 0rem;
+    color: white;
+  }
+
+  .search-div{
+      align-items: center;
+  }

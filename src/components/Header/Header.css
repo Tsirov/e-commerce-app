@@ -1,0 +1,96 @@
+nav.navbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-self: center;
+    letter-spacing: 0.05rem;
+    background: linear-gradient(to right,#ff1d25 5%,#a0328c 35%,#7040a4 45%,#4359c7 55%,#0082e6 70%);
+    /* background: #234465; */
+    padding: 0.8rem 1rem;
+  }
+
+  .navbar-dashboard {
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+  }
+
+  #site-header > nav > section.navbar-dashboard > a {
+    list-style: none;
+    text-decoration: none;
+    align-self: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: white;
+  }
+
+  nav.navbar {
+    letter-spacing: 0.05rem;
+    color: white;
+  }
+
+
+  .navbar {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+  }
+  
+  #site-header > nav > section.navbar-dashboard > a{
+    list-style: none;
+    text-decoration: none;
+    align-self: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: white;
+    
+}
+
+.navbar-dashboard > div > input{
+     align-self: left !important;
+     /* background: linear-gradient(to right,#7040a4 45%,#4359c7 55%); */
+     background: transparent; 
+     color:aliceblue;
+     font-weight: bold;
+}
+
+
+.navbar-dashboard > div > input:focus  {
+    /* background: rgb(248, 215, 107); */
+    background:white;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+     
+}
+
+.buttonIcon{
+    background:none;
+    color: white;
+    align-items: center;
+}
+
+
+.nav-button {
+    display: inline-block;
+    padding: 0.6rem 1rem;
+    border-radius: 0.4rem;
+    text-decoration: none;
+    font-weight: bold;
+    /* background: cadetblue; */
+    color: rgb(255, 255, 255);
+    border: none;
+    font-size: 1rem;
+}
+
+.nav-button:hover {
+    background: rgb(248, 215, 107);
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+
+
