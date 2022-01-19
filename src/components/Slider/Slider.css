@@ -35,7 +35,6 @@
     display: flex;
     transition: all 1.5s ease;
     display: flex;
-    transform:translateX(0vw)
 }
 
 .div-slide {

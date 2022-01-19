@@ -13,14 +13,18 @@ const Slider = () => {
         setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2);
       } else {
         setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
-      }
+        }
+        
     };
 
+    const styles = { 
+        transform: `translateX(${slideIndex * -100}vw)` 
+    };
     return (
 
         <div className='sliderContainer'>
             <button className='button-left' onClick={() => handleClick('left')}><MdOutlineNavigateBefore /></button>
-            <div className="div-slider-wrapper">
+            <div className="div-slider-wrapper" style={styles}>
                 <div className="div-slide">
                     <div className="div-container-img">
                         <img src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1620243493-HOOF-WD497_V1.jpg?crop=1xw:0.993xh;center,top&resize=480:*" alt="" />
