@@ -5,6 +5,7 @@ import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 
 const Cart = () => {
 
+    const style= {fontWeight: 600}
    
     return (
         <div style={{padding:"20px"}} className="cart-wrapper">
@@ -13,7 +14,7 @@ const Cart = () => {
                 <button>CONTINUE SHOPPING</button>
                 <span>Shopping Bag(2)</span>
                 <span>Your Wishlist (0)</span>
-                <button type="filled">CHECKOUT NOW</button>
+                <button >CHECKOUT NOW</button>
             </div>
             <div className="cart-bottom">
                 <div  className="cart-info">
@@ -27,7 +28,7 @@ const Cart = () => {
                                 <span>
                                     <b>ID:</b>93813718293
                                 </span>
-                                <div className="cart-product-color" style={ { color: "black" } }></div>
+                                <div className="cart-product-color" style={ { backgroundColor: "black" } }></div>
                                 <span>
                                     <b>Size</b>37.5
                                 </span>
@@ -83,9 +84,9 @@ const Cart = () => {
                         <span>Shipping Discount</span>
                         <span>$ -5.90</span>
                     </div>
-                    <div className="cart-product-summary-item" type="total">
-                        <span>Total</span>
-                        <span>$ 80</span>
+                    <div className="cart-product-summary-item" >
+                        <span style={{fontWeight: 600}}>Total</span>
+                        <span style={{fontWeight: 600}}>$ 80</span>
                     </div>
                     <button>CHECKOUT NOW</button>
                 </div>

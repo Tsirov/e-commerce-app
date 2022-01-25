@@ -30,7 +30,7 @@ const Header = () => {
         <header id="site-header">
             <nav className="navbar">
                 <section className="navbar-dashboard">
-                    <Link to="/dashboard">Dashboard</Link>
+                    <Link to="/">Dashboard</Link>
                     <div className="search-div">
                         <input type="search" placeholder="What are you looking..." ></input>
                         <button className="buttonIcon"><AiOutlineSearch className="icon" /></button>

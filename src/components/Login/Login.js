@@ -3,7 +3,7 @@ import '../Register/Register.css';
 
 
 
-const Register = () => {
+const Login = () => {
     const style = {
         width: "25%",
         padding: "15px"
@@ -35,4 +35,4 @@ const Register = () => {
     );
 }
 
-export default Register;
+export default Login;

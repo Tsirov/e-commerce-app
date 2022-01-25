@@ -37,3 +37,10 @@
     cursor: pointer;
     font-weight: 600;
 }
+
+.categories-item-info > button:hover
+ {
+    background: rgb(13, 223, 58);
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}

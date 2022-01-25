@@ -27,11 +27,11 @@ const Slider = () => {
             <div className="div-slider-wrapper" style={styles}>
                 <div className="div-slide">
                     <div className="div-container-img">
-                        <img src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1620243493-HOOF-WD497_V1.jpg?crop=1xw:0.993xh;center,top&resize=480:*" alt="" />
+                        <img src="https://asset20.ckassets.com/blog/wp-content/uploads/sites/5/2017/11/14738509856120485816_thumbnail_405x552.jpg" alt="" />
                     </div>
                     <div className="div-container-info">
-                        <h1 >SUMMER SAL</h1>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, cumque adipisci est error temporibus neque ullam nulla.</p>
+                        <h1 >WINTER SAL</h1>
+                        <p>15% of everything from all winter collection</p>
                         <button>SHOP NOW</button>
                     </div>
                 </div>
@@ -40,18 +40,18 @@ const Slider = () => {
                         <img src="http://picture-cdn.wheretoget.it/ub2065-l-610x610-golden+diamonds-shoes-bag-jewels-scarf-blogger-yellow-yellow+dress-summer+outfits-summer+dress-sandals-skater+dress-michael+kors-gladiator+sandals-clutch-givenchy-elegant-classy-ye.jpg" alt="" />
                     </div>
                     <div className="div-container-info">
-                        <h1 >SUMMER SAL</h1>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, cumque adipisci est error temporibus neque ullam nulla.</p>
+                        <h1 >SUMMER COLLECTION</h1>
+                        <p>Shop now from ours summer collection to be ready for the coming summer.</p>
                         <button>SHOP NOW</button>
                     </div>
                 </div>
                 <div className="div-slide">
                     <div className="div-container-img">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKJ32E364VIhMPu8dPifwzQLdqAa2loZNyR_Fe2T9FGvhhbX0GAu-S5fM1hyLE71L5KlQ&usqp=CAU" alt="" />
+                        <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/lv-9-1601993907.jpg" alt="" />
                     </div>
                     <div className="div-container-info">
-                        <h1 >SUMMER SAL</h1>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, cumque adipisci est error temporibus neque ullam nulla.</p>
+                        <h1 >NEW COLLECTION</h1>
+                        <p>Keep up with fashion and choose your new collection.</p>
                         <button>SHOP NOW</button>
                     </div>
                 </div>

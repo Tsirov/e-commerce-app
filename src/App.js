@@ -16,29 +16,38 @@ import Cart from './components/Cart';
 
 function App() {
     return (
-        
-        <div className="container">
 
+        <div className="container">
             <Header />
-            {/* <Slider />
-            <Categories />
+
+            <Routes>
+                <Route path="/" element={
+                    <>
+                        <Slider />
+                        <Categories />
+                        <Newsletter />
+                    </>
+                }/>
+                <Route path="/register" element={ <Register/> } />
+                <Route path="/Login" element={ <Login/> } />
+
+
+             
+
+
+            </Routes>
+
+            {/* 
             <Products />
             <Newsletter/> */}
 
             {/* <ProductList/> */ }
-            
+
 
             {/* <ProductPage/> */ }
-            
 
-          {/* <Register/>  */}
-            
-
-            {/* <Login/> */ }
-            
-
-            <Cart/>
-{/* 
+            {/* <Cart/> */ }
+            {/* 
             <main id="site-content">
               <Routes>
                 
@@ -47,7 +56,7 @@ function App() {
  */}
 
             <footer id="site-footer">
-              <p>@My said</p>
+                <p>@My said</p>
             </footer>
         </div>
     );

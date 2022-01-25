@@ -5,10 +5,10 @@
       rgba(255, 255, 255, 0.5),
       rgba(255, 255, 255, 0.5)
     ),
-    url("https://images.pexels.com/photos/6984661/pexels-photo-6984661.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
+    url("https://image.freepik.com/free-photo/young-pretty-smiling-happy-woman-red-mittens-knitted-hat-wearing-winter-coat-walking-city-street-warm-clothes_285396-5194.jpg")
       center;
-  background-size: cover;
-  display: flex;
+  background-size: cover; 
+  display: flex; 
   align-items: center;
   justify-content: center;  
 }
@@ -16,7 +16,7 @@
 .register-wrapper{
     width: 40%;
   padding: 20px;
-  background-color: white;
+  background-color:transparent;
 }
 
 .register-wrapper > h1{
@@ -47,3 +47,22 @@
   background-color: teal;
   color: white;
 }
+
+
+.register-wrapper > form > button:hover{
+    background: rgb(153, 27, 5);
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+
+.field{
+    display:block;
+}
+.field > label {
+	font-weight: bold;
+    display: center;
+}
+
+
+

@@ -1,7 +1,6 @@
 import './CategoriesItem.css';
 
 const CategoriesItem = ({ element }) => {
-    console.log(element);
     return (
 
         <div className='categories-item-container'>
