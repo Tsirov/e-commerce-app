@@ -1,11 +1,15 @@
+import { useLocation } from 'react-router-dom';
+
 import './Product.css';
 import { AiOutlineShoppingCart,AiOutlineSearch,AiOutlineHeart } from "react-icons/ai";
+import { Link } from 'react-router-dom';
 
 
 
 
 const Product = ({ element }) => {
-    
+    // const location = useLocation();
+    // const cat = location.pathname.split('/')[2];
 
     return (
 
@@ -16,6 +20,7 @@ const Product = ({ element }) => {
                     <AiOutlineShoppingCart/>
                 </div>
                 <div className="product-icon">
+                    {/* <Link to={`/product/${element._id}`} */}
                     <AiOutlineSearch/>
                 </div>
                 <div className="product-icon">

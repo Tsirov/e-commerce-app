@@ -1,7 +1,29 @@
+import { useLocation } from 'react-router-dom';
+
+
 import './ProductPage.css';
 import{AiOutlinePlus,AiOutlineMinus}  from "react-icons/ai";
+import { useEffect, useState } from 'react';
 
 const ProductPage = () => {
+    const location = useLocation();
+    const id = location.pathname.split('/')[2];
+
+    const [product, setProduct] = useState({});
+
+
+    useEffect(() => {
+        const getProduct = async () => {
+            try {
+                const data = await fetch('http://localhost:5000/api/products/find/' + id);
+                const result = data.json();
+                setProduct(result);
+            } catch (e) {
+                
+            }
+        }
+        getProduct();
+    })
 
     return (
 

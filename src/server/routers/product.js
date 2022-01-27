@@ -2,14 +2,13 @@ const Product = require("../models/Product");
 const {
   verifyToken,
   verifyTokenAndAuthorization,
-  verifyTokenAndAdmin,
 } = require("./verifyToken");
 
 const router = require("express").Router();
 
 //CREATE
 
-router.post("/", verifyTokenAndAdmin, async (req, res) => {
+router.post("/", verifyTokenAndAuthorization, async (req, res) => {
   const newProduct = new Product(req.body);
 
   try {
@@ -21,7 +20,7 @@ router.post("/", verifyTokenAndAdmin, async (req, res) => {
 });
 
 //UPDATE
-router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
+router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
   try {
     const updatedProduct = await Product.findByIdAndUpdate(
       req.params.id,
@@ -37,7 +36,7 @@ router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
 });
 
 //DELETE
-router.delete("/:id", verifyTokenAndAdmin, async (req, res) => {
+router.delete("/:id", verifyTokenAndAuthorization, async (req, res) => {
   try {
     await Product.findByIdAndDelete(req.params.id);
     res.status(200).json("Product has been deleted...");
@@ -58,8 +57,11 @@ router.get("/find/:id", async (req, res) => {
 
 //GET ALL PRODUCTS
 router.get("/", async (req, res) => {
+    console.log('GET request');
+    console.log(req.query);
   const qNew = req.query.new;
-  const qCategory = req.query.category;
+    const qCategory = req.query.category;
+    console.log(qNew,qCategory);
   try {
     let products;
 
@@ -72,7 +74,8 @@ router.get("/", async (req, res) => {
         },
       });
     } else {
-      products = await Product.find();
+        products = await Product.find({});
+        console.log(products);
     }
 
     res.status(200).json(products);

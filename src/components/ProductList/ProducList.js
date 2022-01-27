@@ -1,6 +1,9 @@
+import {useLocation } from 'react-router-dom';
+
 import './ProductList.css';
 import Products from '../Products';
 import Newsletter from '../Newsletter';
+import { useState } from 'react';
 
 const products = [
     {
@@ -38,41 +41,55 @@ const products = [
 ];
 
 const ProductList = () => {
+    const location = useLocation();
+    const cat = location.pathname.split('/')[2];
+    const [filters, setFilters] = useState({});
+    const [sort, setSort] = useState('newest');
+    console.log(cat);
+
+    const filterHandler = (e) => {
+        const value = e.target.value;
+        setFilters({
+            ...filters,
+            [e.target.name]: value
+        });
+    };
+
 
     return (
         <div className="product-list-container">
-            <h1 style={{margin: "20px"}}>Dresses</h1>
+            <h1 style={{margin: "20px"}}>{cat}</h1>
             <div className="product-list-filter">
                 <div  className="product-list">
                     <span>Filter Products:</span>
-                    <select name="" id="" defaultValue={'DEFAULT'}>
+                    <select  onChange={filterHandler} name="color" id="" defaultValue={'DEFAULT'}>
                     <option value="DEFAULT" disabled>Color</option>
-                        <option value="">White</option>
-                        <option value="">Black</option>
-                        <option value="">Red</option>
-                        <option value="">Blue</option>
-                        <option value="">Yellow</option>
-                        <option value="">Green</option>
+                        <option value="White">White</option>
+                        <option value="Black">Black</option>
+                        <option value="Red">Red</option>
+                        <option value="Blue">Blue</option>
+                        <option value="Yellow">Yellow</option>
+                        <option value="Green">Green</option>
                     </select>
-                    <select name="" id=""  defaultValue={'DEFAULT'}>
+                    <select onChange={filterHandler} name="size" id=""  defaultValue={'DEFAULT'}>
                     <option value="DEFAULT" disabled>Size</option>
-                        <option value="">XS</option>
-                        <option value="">S</option>
-                        <option value="">M</option>
-                        <option value="">L</option>
-                        <option value="">XL</option>
+                        <option value="XS">XS</option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
                     </select>
                 </div>
                 <div className="product-list">
                     <span>Sort Products:</span>
-                    <select name="" id="" defaultValue="Newest">
-                    <option >Newest</option>
-                        <option value="">Prise (asc)</option>
-                        <option value="">Prise (desc)</option>
+                    <select onChange={(e) => setSort(e.target.value)} name="featured" id="" defaultValue="Newest">
+                    <option  value="newest">Newest</option>
+                        <option value="low to hight">Prise: Low to Hight</option>
+                        <option value="hight to low">Prise: Hight to Low</option>
                     </select>
                 </div>
             </div>
-            <Products />
+            <Products cat={cat} filters={filters} sort={sort} />
             <Newsletter />
         </div>
 

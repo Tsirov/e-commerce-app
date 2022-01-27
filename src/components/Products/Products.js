@@ -1,5 +1,6 @@
 import './Products.css';
 import Product from './Product';
+import { useEffect, useState } from 'react';
 
 const products = [
     {
@@ -36,13 +37,56 @@ const products = [
       },
 ];
 
-const Products = () => {
+const Products = ({cat,filters,sort}) => {
+    const [products, setProducts] = useState([]);
+    const [filteredProducts, setFilteredProducts] = useState([]);
     
+    useEffect(() => {
+        const getProducts = async () => {
+            try {
+                console.log(cat);
+                const data = await fetch(cat ? `http://localhost:5000/api/products?category=${cat}` : `http://localhost:5000/api/products`);
+                const result = await data.json();
+                console.log(result);
+                setProducts(result)
+            } catch (err) {
+               console.log(err); 
+            }
+        }
+        getProducts();
+    }, [cat]);
+
+    // to see this function because is not working properly
+    // useEffect(() => {
+    //     console.log('useeffect',filters);
+    //     cat && setFilteredProducts(
+    //         products.filter((item) => {
+    //             return Object.entries(filters).every(([key, value]) => {
+    //                 console.log(key, '--------', value);
+    //                 return item[key].includes(value)
+    //             })
+                
+    //         })
+    //     );
+    // }, [cat, products, filters]);
+
+
+    useEffect(() => {
+        if (sort === 'newest') {
+            setProducts((prev) => [...prev].sort((a, b) => a.createdAt - b.createdAt));
+        } else if (sort == 'low to hight') {
+            setProducts((prev) => [...prev].sort((a, b) => a.price - b.price))
+            
+        } else if (sort == 'hight to low') {
+            setProducts((prev) => [...prev].sort((a, b) => b.price - a.price))
+        }
+    },[]);
+
     return (
 
         <div className='categories-products'>
             { products.map((product) => (
-                <Product key={product.id} element={product}/>
+                <Product key={product._id} element={product}/>
             ))}
            
         </div>

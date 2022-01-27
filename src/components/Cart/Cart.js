@@ -1,9 +1,12 @@
+import { useSelector } from 'react-redux';
+
 import './Cart.css';
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 
 
 
 const Cart = () => {
+    const cart = useSelector((state) => state.cart)
 
     const style= {fontWeight: 600}
    
@@ -18,63 +21,39 @@ const Cart = () => {
             </div>
             <div className="cart-bottom">
                 <div  className="cart-info">
-                    <div className="cart-product">
+                    { cart.products.map((product) =>(<div className="cart-product">
                         <div className="cart-product-details" >
-                            <img src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1614188818-TD1MTHU_SHOE_ANGLE_GLOBAL_MENS_TREE_DASHERS_THUNDER_b01b1013-cd8d-48e7-bed9-52db26515dc4.png?crop=1xw:1.00xh;center,top&resize=480%3A%2A" alt="" />
+                            <img src={product.img} alt="" />
                             <div className="cart-details" >
                                 <span>
-                                    <b>Product:</b>JESSIE THUNDER SHOES
+                                    <b>Product:</b>{product.title}
                                 </span>
                                 <span>
-                                    <b>ID:</b>93813718293
+                                    <b>ID:</b>{product._id}
                                 </span>
-                                <div className="cart-product-color" style={ { backgroundColor: "black" } }></div>
+                                <div className="cart-product-color" style={ { backgroundColor: product.color } }></div>
                                 <span>
-                                    <b>Size</b>37.5
+                                    <b>Size</b>{product.size}
                                 </span>
                             </div>
                         </div>
                         <div className="cart-product-price-details" >
                             <div className="cart-product-counter">
                                 <AiOutlinePlus />
-                                <div>2</div>
+                                <div>{product.quantity}</div>
                                 <AiOutlineMinus />
                             </div>
-                            <div className="cart-product-final-price">$ 30</div>
+                            <div className="cart-product-final-price">$ {product.price * product.quantity}</div>
                         </div>
-                    </div>
+                    </div>))}
                     <hr className="cart-product-hr" />
-                    <div className="cart-product">
-                        <div className="cart-product-details" >
-                            <img src="https://i.pinimg.com/originals/2d/af/f8/2daff8e0823e51dd752704a47d5b795c.png" alt="" />
-                            <div className="cart-details" >
-                                <span>
-                                    <b>Product:</b>HAKURA T-SHIRT
-                                </span>
-                                <span>
-                                    <b>ID:</b>93813718293
-                                </span>
-                                <div className="cart-product-color" style={ { color: "gray" } }></div>
-                                <span>
-                                    <b>Size</b>M
-                                </span>
-                            </div>
-                        </div>
-                        <div className="cart-product-price-details" >
-                            <div className="cart-product-counter">
-                                <AiOutlinePlus />
-                                <div>1</div>
-                                <AiOutlineMinus />
-                            </div>
-                            <div className="cart-product-final-price">$ 30</div>
-                        </div>
-                    </div>
+                    
                 </div>
                 <div className="cart-product-summary" >
                     <h1 >ORDER SUMMARY</h1>
                     <div className="cart-product-summary-item">
                         <span>Subtotal</span>
-                        <span>$ 80</span>
+                        <span>$ {cart.total}</span>
                     </div>
                     <div className="cart-product-summary-item">
                         <span>Estimated Shipping</span>
@@ -86,7 +65,7 @@ const Cart = () => {
                     </div>
                     <div className="cart-product-summary-item" >
                         <span style={{fontWeight: 600}}>Total</span>
-                        <span style={{fontWeight: 600}}>$ 80</span>
+                        <span style={{fontWeight: 600}}>$ {cart.total}</span>
                     </div>
                     <button>CHECKOUT NOW</button>
                 </div>
