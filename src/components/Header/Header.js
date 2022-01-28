@@ -37,9 +37,9 @@ const Header = () => {
             </Link>
             <span style={ { "marginLeft": "10px" } }></span >
             <span>Welcome, { user.username }</span>
-            <Link className="button" to="/my-pets">My Pets</Link>
-            <Link className="button" to="/create">Add Pet</Link>
-            <Link onClick={logoutHandler} className="button" to="/">Logout</Link>
+            <Link className="nav-button" to="/myProducts">My Products</Link>
+            <Link className="nav-button" to="/create">Add Product</Link>
+            <Link onClick={logoutHandler} className="nav-button" to="/">Logout</Link>
         </div>
     );
 
@@ -51,6 +51,7 @@ const Header = () => {
             <nav className="navbar">
                 <section className="navbar-dashboard">
                     <Link to="/">Dashboard</Link>
+                    <Link to="/products">All Products</Link>
                     <div className="search-div">
                         <input type="search" placeholder="What are you looking..." ></input>
                         <button className="buttonIcon"><AiOutlineSearch className="icon" /></button>

@@ -33,7 +33,7 @@ const Login = () => {
             } else {
                 setErrMsg(null);
                 const { userData, token } = await data.json();
-                dispatch(loginSuccess({email:userData.email, username: userData.username,token}))
+                dispatch(loginSuccess({email:userData.email, username: userData.username,_id:userData._id,token}))
                 navigate('/')
             }
     

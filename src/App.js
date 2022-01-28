@@ -12,6 +12,9 @@ import ProductPage from './components/ProductPage';
 import Register from './components/Register';
 import Login from './components/Login';
 import Cart from './components/Cart';
+import Create from './components/Create';
+import MyProducts from './components/MyProducts';
+import Edit from './components/Edit';
 
 
 function App() {
@@ -19,7 +22,6 @@ function App() {
 
         <div className="container">
             <Header />
-
             <Routes>
                 <Route path="/" element={
                     <>
@@ -31,6 +33,11 @@ function App() {
                 <Route path="/register" element={ <Register/> } />
                 <Route path="/login" element={ <Login/> } />
                 <Route path="/products/*" exact="true" element={ <ProductList/> } />
+                <Route path="/product/:id" exact="true" element={ <ProductPage/> } />
+                {/* <Route path="/products/categories" exact="true" element={ <ProductList/> } /> */}
+                <Route path="/create" element={ <Create /> }/>
+                <Route path="/myProducts" element={ <MyProducts /> }/>
+                <Route path="/edit/*" element={ <Edit/> }/>
 
 
              

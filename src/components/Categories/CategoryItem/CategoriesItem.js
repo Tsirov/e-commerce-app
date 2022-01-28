@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import './CategoriesItem.css';
 
 const CategoriesItem = ({ element }) => {
@@ -7,7 +9,9 @@ const CategoriesItem = ({ element }) => {
             <img src={ element.img } alt="" />
             <div className="categories-item-info">
                 <h1 > { element.title }</h1>
+                <Link to={`/products/${element.category}`} >
                 <button>SHOP NOW</button>
+                </Link>
             </div>
         </div>
 

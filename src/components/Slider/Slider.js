@@ -32,7 +32,9 @@ const Slider = () => {
                     <div className="div-container-info">
                         <h1 >WINTER SAL</h1>
                         <p>15% of everything from all winter collection</p>
-                        <button>SHOP NOW</button>
+                        <Link to="/products/winter" >
+                        <button>SHOP NOW</button> 
+                        </Link>
                     </div>
                 </div>
                 <div className="div-slide">
@@ -42,7 +44,9 @@ const Slider = () => {
                     <div className="div-container-info">
                         <h1 >SUMMER COLLECTION</h1>
                         <p>Shop now from ours summer collection to be ready for the coming summer.</p>
-                        <button>SHOP NOW</button>
+                        <Link to="/products/summer" >
+                        <button>SHOP NOW</button> 
+                        </Link>
                     </div>
                 </div>
                 <div className="div-slide">
@@ -52,7 +56,10 @@ const Slider = () => {
                     <div className="div-container-info">
                         <h1 >NEW COLLECTION</h1>
                         <p>Keep up with fashion and choose your new collection.</p>
-                        <button>SHOP NOW</button>
+                        <Link to="/products/new" >
+                        <button>SHOP NOW</button> 
+                        </Link>
+                    
                     </div>
                 </div>
             </div>

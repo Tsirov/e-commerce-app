@@ -35,7 +35,7 @@ const Register = () => {
             } else {
                 setErrMsg(null);
                 const { userData, token } = await data.json();
-                dispatch(registerSuccess({email:userData.email, username: userData.username, token}))
+                dispatch(registerSuccess({email:userData.email, username: userData.username,_id:userData._id, token}))
                 navigate('/')
             }
 

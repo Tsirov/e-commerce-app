@@ -56,3 +56,19 @@
   /* .product-container:hover {
 
   } */
+
+  .product-user{
+    position: absolute;
+    height: 32px;
+    display: block;
+    bottom: 2%;
+
+
+  }
+  .product-category{
+    position: absolute;
+    height: 32px;
+    display: block;
+
+    top: 2%;
+  }
