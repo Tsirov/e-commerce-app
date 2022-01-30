@@ -89,6 +89,8 @@ cart-wrapper > h1 {
     background-color: #eee;
     border: none;
     height: 1px;
+    
+     
 }
 
 .cart-product-summary {
@@ -111,4 +113,8 @@ cart-wrapper > h1 {
 
 .cart-product-summary > h1 {
     font-weight: 200;
+}
+
+.aaa{
+    text-align: center;
 }

@@ -4,18 +4,18 @@ const userRedux = createSlice({
     name: 'user',
     initialState: {
         currentUser: {},
-        isFetching: false,
-        error:false
+        // isFetching: false,
+        // error:false
     },
     reducers: {
         loginStart: (state) => {
-            state.isFetching = true
+            // state.isFetching = true
         },
         loginSuccess: (state, action) => {
-            state.isFetching = false;
+            // state.isFetching = false;
             state.currentUser = action.payload;
         },registerSuccess: (state, action) => {
-            state.isFetching = true;
+            // state.isFetching = true;
             state.currentUser = action.payload;
         },
         logoutSuccess: (state) => {

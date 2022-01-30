@@ -16,7 +16,7 @@ nav.navbar {
     width: 100vw;
   }
 
-  #site-header > nav > section.navbar-dashboard > a {
+  #site-header > nav > section.navbar-dashboard > div> a {
     list-style: none;
     text-decoration: none;
     align-self: center;

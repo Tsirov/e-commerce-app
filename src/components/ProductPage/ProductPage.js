@@ -1,15 +1,17 @@
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
 
 import './ProductPage.css';
+import { addProduct } from '../../redux/cartRedux';
 
 const ProductPage = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const id = location.pathname.split('/')[2];
 
+    const dispatch = useDispatch();
     const [product, setProduct] = useState({});
     const [quantity, setQuantity] = useState(1);
     const user = useSelector(state => state.user.currentUser);
@@ -47,6 +49,12 @@ const ProductPage = () => {
         } catch (e) {
             console.log(e);
         }
+    }
+
+        
+    const clickAddHandler = () => {
+        
+        dispatch(addProduct({ ...product, quantity}));
     }
 
     return (
@@ -99,7 +107,7 @@ const ProductPage = () => {
                                     <span>{ quantity }</span>
                                     <button onClick={ () => clickHandler("increase") }><AiOutlinePlus /></button>
                                 </div>
-                                <button> ADD TO CART</button>
+                                <button onClick={clickAddHandler}> ADD TO CART</button>
                             </>
                         }
 

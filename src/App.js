@@ -39,7 +39,7 @@ function App() {
                 <Route path="/myProducts" element={ <MyProducts /> }/>
                 <Route path="/edit/*" element={ <Edit/> }/>
 
-
+                <Route path="/cart" element={<Cart/>} />
              
 
 
