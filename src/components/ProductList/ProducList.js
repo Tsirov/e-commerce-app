@@ -11,7 +11,6 @@ const ProductList = () => {
     const [filters, setFilters] = useState({});
     const [sort, setSort] = useState('newest');
 
-
     const filterHandler = (e) => {
         const value = e.target.value;
         setFilters({
@@ -19,7 +18,6 @@ const ProductList = () => {
             [e.target.name]: value
         });
     };
-
 
     return (
         <div className="product-list-container">
@@ -58,8 +56,6 @@ const ProductList = () => {
             <Products cat={cat} filters={filters} sort={sort} />
             <Newsletter />
         </div>
-
-
     );
 }
 

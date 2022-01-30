@@ -1,15 +1,12 @@
 const Product = require("../models/Product");
 const { body, validationResult } = require('express-validator');
-const {
-    verifyToken,
-    verifyTokenAndAuthorization,
-} = require("./verifyToken");
+
 
 const router = require("express").Router();
 
 //CREATE
 
-router.post("/"/*, verifyTokenAndAuthorization,*/,
+router.post("/",
     body('img').isURL().withMessage('Please enter correct URL address.'),
     body('price').custom((value, { req }) => {
         const rex = /[0-9]/gm
@@ -82,7 +79,7 @@ router.put("/:id",
     });
 
 //DELETE
-router.delete("/:id", /*verifyTokenAndAuthorization,*/ async (req, res) => {
+router.delete("/:id",  async (req, res) => {
 
     try {
         // let result = await Product.findByIdAndDelete(req.params.id);

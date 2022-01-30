@@ -1,20 +1,15 @@
 import { Link } from 'react-router-dom';
-import { AiOutlineSearch } from "react-icons/ai";
 import { Badge } from "@material-ui/core";
 import { ShoppingCartOutlined } from "@material-ui/icons";
 import { useSelector, useDispatch } from 'react-redux';
+
 import { logoutSuccess } from '../../redux/userRedux';
 import { clearProduct } from '../../redux/cartRedux';
-
-
-
 import './Header.css';
-
 
 const Header = () => {
     const dispatch = useDispatch();
     let user = useSelector(state => state.user.currentUser);
-
 
     const quantity = useSelector(state => state.cart.quantity);
 
@@ -46,8 +41,6 @@ const Header = () => {
         </div>
     );
 
-
-
     return (
 
         <header id="site-header">
@@ -73,7 +66,6 @@ const Header = () => {
                 </section>
             </nav>
         </header>
-
     );
 }
 

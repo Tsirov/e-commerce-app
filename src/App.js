@@ -5,7 +5,6 @@ import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Slider from './components/Slider';
 import Categories from './components/Categories';
-import Products from './components/Products';
 import Newsletter from './components/Newsletter';
 import ProductList from './components/ProductList';
 import ProductPage from './components/ProductPage';
@@ -34,35 +33,11 @@ function App() {
                 <Route path="/login" element={ <Login/> } />
                 <Route path="/products/*" exact="true" element={ <ProductList/> } />
                 <Route path="/product/:id" exact="true" element={ <ProductPage/> } />
-                {/* <Route path="/products/categories" exact="true" element={ <ProductList/> } /> */}
                 <Route path="/create" element={ <Create /> }/>
                 <Route path="/myProducts" element={ <MyProducts /> }/>
                 <Route path="/edit/*" element={ <Edit/> }/>
-
                 <Route path="/cart" element={<Cart/>} />
-             
-
-
             </Routes>
-
-            {/* 
-            <Products />
-            <Newsletter/> */}
-
-            {/* <ProductList/> */ }
-
-
-            {/* <ProductPage/> */ }
-
-            {/* <Cart/> */ }
-            {/* 
-            <main id="site-content">
-              <Routes>
-                
-              </Routes>
-            </main>
- */}
-
             <footer id="site-footer">
                 <p>@My said</p>
             </footer>

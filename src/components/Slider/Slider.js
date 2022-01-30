@@ -4,8 +4,6 @@ import { useState } from "react";
 
 import './Slider.css';
 
-
-
 const Slider = () => {
     const [slideIndex, setSlideIndex] = useState(0);
     const handleClick = (direction) => {
@@ -65,8 +63,6 @@ const Slider = () => {
             </div>
             <button className='button-right' onClick={ () => handleClick('right') }><MdOutlineNavigateNext /></button>
         </div>
-
-
     );
 }
 

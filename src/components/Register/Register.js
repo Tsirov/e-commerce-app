@@ -3,8 +3,6 @@ import { useState } from 'react';
 import { useDispatch } from "react-redux";
 
 import { registerSuccess} from '../../redux/userRedux';
-
-
 import './Register.css';
 
 const Register = () => {
@@ -79,7 +77,6 @@ const Register = () => {
                 </form>
             </div>
         </div>
-
     );
 }
 

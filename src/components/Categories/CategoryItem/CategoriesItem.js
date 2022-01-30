@@ -14,8 +14,6 @@ const CategoriesItem = ({ element }) => {
                 </Link>
             </div>
         </div>
-
-
     );
 }
 

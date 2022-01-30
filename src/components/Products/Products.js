@@ -1,7 +1,7 @@
-import './Products.css';
-import Product from './Product';
 import { useEffect, useState } from 'react';
 
+import Product from './Product';
+import './Products.css';
 
 const Products = ({ cat, filters, sort }) => {
     let [products, setProducts] = useState([]);

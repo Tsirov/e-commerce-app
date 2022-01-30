@@ -47,7 +47,6 @@ const Create = () => {
         } catch (err) {
             console.log(err);
         }
-        
     }
     console.log('errmsg',errMsg);
 
@@ -169,7 +168,6 @@ const Create = () => {
                 </form>
             </div>
         </>
-
     );
 }
 

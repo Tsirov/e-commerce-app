@@ -4,8 +4,6 @@ import { useState } from 'react';
 
 import './Newsletter.css';
 
-// import { useAuthContext } from '../../contexts/AuthContext';
-
 const Newsletter = () => {
     const [email, setEmail] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
@@ -33,9 +31,7 @@ const Newsletter = () => {
         } catch (err) {
             console.log(err);
         }
-        
     }
-    
 
     return (
         <div className="newsletter-container">
@@ -48,9 +44,7 @@ const Newsletter = () => {
                     <AiOutlineSend/>
                 </button>
             </div>
-
         </div>
-
     );
 }
 

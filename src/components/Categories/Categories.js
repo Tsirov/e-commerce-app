@@ -1,4 +1,3 @@
-
 import CategoriesItem from './CategoryItem';
 
 import './Categories.css';

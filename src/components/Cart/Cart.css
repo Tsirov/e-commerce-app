@@ -31,7 +31,6 @@ cart-wrapper > h1 {
 .cart-info {
     flex: 3;
     font-weight: 600;
-
 }
 
 .cart-product {
@@ -89,8 +88,6 @@ cart-wrapper > h1 {
     background-color: #eee;
     border: none;
     height: 1px;
-    
-     
 }
 
 .cart-product-summary {
@@ -105,16 +102,13 @@ cart-wrapper > h1 {
     margin: 30px 0px;
     display: flex;
     justify-content: space-between;
-    /* font-weight: 500; */
     font-weight: 500;
-
-    /* //....    */
 }
 
 .cart-product-summary > h1 {
     font-weight: 200;
 }
 
-.aaa{
+.aaa {
     text-align: center;
 }

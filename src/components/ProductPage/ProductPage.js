@@ -50,7 +50,6 @@ const ProductPage = () => {
             console.log(e);
         }
     }
-
         
     const clickAddHandler = () => {
         
@@ -110,11 +109,9 @@ const ProductPage = () => {
                                 <button onClick={clickAddHandler}> ADD TO CART</button>
                             </>
                         }
-
                     </div>
                 </div>
             </div>
-
     );
 }
 

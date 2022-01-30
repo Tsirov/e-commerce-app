@@ -1,12 +1,10 @@
 import { useSelector } from 'react-redux';
-import {Link} from 'react-router-dom';
-
-import './Cart.css';
+import { Link } from 'react-router-dom';
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
-import { decreaseProduct, increaseProduct } from '../../redux/cartRedux';
 import { useDispatch } from 'react-redux';
 
-
+import { decreaseProduct, increaseProduct } from '../../redux/cartRedux';
+import './Cart.css';
 
 const Cart = () => {
     const dispatch = useDispatch();
@@ -15,21 +13,20 @@ const Cart = () => {
 
     const clickHandler = (command, index) => {
         if (command === 'increase') {
-            dispatch(increaseProduct({index}))
+            dispatch(increaseProduct({ index }))
         } else {
-            dispatch(decreaseProduct({index}))
+            dispatch(decreaseProduct({ index }))
         }
-        console.log(command,index);
+        console.log(command, index);
     }
-    
 
     return (
         <div style={ { padding: "20px" } } className="cart-wrapper">
-                <h1 >YOUR BAG</h1>
-                <p >If you bay something over $ 100  the shipping will be free.</p>
+            <h1 >YOUR BAG</h1>
+            <p >If you bay something over $ 100  the shipping will be free.</p>
             <div className="cart-top">
                 <Link to="/products">
-                <button>CONTINUE SHOPPING</button>
+                    <button>CONTINUE SHOPPING</button>
                 </Link>
                 <span>Shopping Bag(2)</span>
                 <span>Your Wishlist (0)</span>
@@ -40,7 +37,7 @@ const Cart = () => {
                 <div className="cart-info">
                     { cart.products.map((product, index) => (
                         <div key={ index }>
-                            <div  className="cart-product">
+                            <div className="cart-product">
                                 <div className="cart-product-details" >
                                     <img style={ { 'width': '200px' } } src={ product.img } alt="" />
                                     <div className="cart-details" >
@@ -58,12 +55,12 @@ const Cart = () => {
                                 </div>
                                 <div className="cart-product-price-details" >
                                     <div className="cart-product-counter">
-                                        <button onClick={() => clickHandler('increase', index) }>
-                                        <AiOutlinePlus />
+                                        <button onClick={ () => clickHandler('increase', index) }>
+                                            <AiOutlinePlus />
                                         </button>
                                         <div>{ product.quantity }</div>
-                                        <button onClick={() => clickHandler('decrease', index) } >
-                                        <AiOutlineMinus />
+                                        <button onClick={ () => clickHandler('decrease', index) } >
+                                            <AiOutlineMinus />
                                         </button>
                                     </div>
                                     <div className="cart-product-final-price">$ { product.price * product.quantity }</div>
@@ -87,7 +84,7 @@ const Cart = () => {
                     </div>
                     <div className="cart-product-summary-item">
                         <span>Shipping Discount</span>
-                        <span> $ {cart.total < 100 ? '-5.90' : '0.00'}</span>
+                        <span> $ { cart.total < 100 ? '-5.90' : '0.00' }</span>
                     </div>
                     <div className="cart-product-summary-item" >
                         <span style={ { fontWeight: 600 } }>Total</span>

@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useLocation, useNavigate, Link } from 'react-router-dom';
-
+import { useLocation, useNavigate} from 'react-router-dom';
 
 import './Edit.css';
-
 
 const Edit = () => {
     const location = useLocation();

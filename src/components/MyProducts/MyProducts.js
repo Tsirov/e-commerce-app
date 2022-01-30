@@ -22,16 +22,6 @@ const MyProducts = () => {
         getElement();
     }, [])
 
-
-
-    const issGuest = (
-        <>
-
-        </>
-
-    )
-
-
     return (
         <div className="my-Product-container">
 
@@ -65,10 +55,7 @@ const MyProducts = () => {
                     )
                 })
                 : <h1 className="myProducts-h1" > No products in your list.</h1> }
-
-
         </div>
-
     )
 }
 
