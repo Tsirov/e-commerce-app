@@ -20,6 +20,7 @@ import { useSelector } from 'react-redux';
 
 function App() {
     const user = useSelector((state) => state.user.currentUser)
+    console.log(user);
     // const Navigate = useNavigate();
     return (
 
@@ -36,7 +37,7 @@ function App() {
 
                 <Route path="/products/*" exact="true" element={ <ProductList /> } />
 
-                { Object.keys(user).length > 0 ?
+                { user && Object.keys(user).length > 0 ?
                     <>
                         <Route path="/create" element={ <Create /> } />
                         <Route path="/myProducts" element={ <MyProducts /> } />

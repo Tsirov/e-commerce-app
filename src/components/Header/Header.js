@@ -68,7 +68,7 @@ const Header = () => {
 
                     {/* <i className="em em-search"></i> */ }
 
-                    { user.email
+                    { user && user.email
                         ? userNavigation()
                         : guestNavigation
                     }
