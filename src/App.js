@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 
 
 
@@ -14,9 +14,13 @@ import Cart from './components/Cart';
 import Create from './components/Create';
 import MyProducts from './components/MyProducts';
 import Edit from './components/Edit';
+import ServerIsNotWorking from './components/404/ServerIsNotWorking';
+import { useSelector } from 'react-redux';
 
 
 function App() {
+    const user = useSelector((state) => state.user.currentUser)
+    // const Navigate = useNavigate();
     return (
 
         <div className="container">
@@ -28,15 +32,34 @@ function App() {
                         <Categories />
                         <Newsletter />
                     </>
-                }/>
-                <Route path="/register" element={ <Register/> } />
-                <Route path="/login" element={ <Login/> } />
-                <Route path="/products/*" exact="true" element={ <ProductList/> } />
-                <Route path="/product/:id" exact="true" element={ <ProductPage/> } />
-                <Route path="/create" element={ <Create /> }/>
-                <Route path="/myProducts" element={ <MyProducts /> }/>
-                <Route path="/edit/*" element={ <Edit/> }/>
-                <Route path="/cart" element={<Cart/>} />
+                } />
+
+                <Route path="/products/*" exact="true" element={ <ProductList /> } />
+
+                { Object.keys(user).length > 0 ?
+                    <>
+                        <Route path="/create" element={ <Create /> } />
+                        <Route path="/myProducts" element={ <MyProducts /> } />
+                        <Route path="/edit/*" element={ <Edit /> } />
+                        <Route path="/cart" element={ <Cart /> } />
+                        <Route path="/register" element={ <Navigate replace to="/" /> } />
+                        <Route path="/login" element={ <Navigate replace to="/" /> } />
+
+                    </>
+                    :
+                    <>
+                        <Route path="/create" element={ <Navigate replace to="/login" /> } />
+                        <Route path="/myProducts" element={ <Navigate replace to="/login" /> } />
+                        <Route path="/edit/*" element={ <Navigate replace to="/login" /> } />
+                        <Route path="/cart" element={ <Navigate replace to="/login" /> } />
+                        <Route path="/register" element={ <Register /> } />
+                        <Route path="/login" element={ <Login /> } />
+                    </>
+                }
+
+                <Route path="/product/:id" exact="true" element={ <ProductPage /> } />
+
+                <Route path="/404" element={ <ServerIsNotWorking /> } />
             </Routes>
             <footer id="site-footer">
                 <p>@My said</p>

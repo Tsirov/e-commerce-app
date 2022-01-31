@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useDispatch } from "react-redux";
 
-import { registerSuccess} from '../../redux/userRedux';
+import { registerSuccess } from '../../redux/userRedux';
 import './Register.css';
 
 const Register = () => {
@@ -33,7 +33,7 @@ const Register = () => {
             } else {
                 setErrMsg(null);
                 const { userData, token } = await data.json();
-                dispatch(registerSuccess({email:userData.email, username: userData.username,_id:userData._id, token}))
+                dispatch(registerSuccess({ email: userData.email, username: userData.username, _id: userData._id, token }))
                 navigate('/')
             }
 
@@ -49,23 +49,31 @@ const Register = () => {
                 <form onSubmit={ onSubmitHandler } method="POST">
                     <p className="field">
                         <label htmlFor="email">Email </label>
-                        <input type="text" name="email" />
+                        <span className="input">
+                            <input type="text" name="email" />
+                        </span>
                     </p>
                     <p className="field">
                         <label htmlFor="username">Username </label>
-                        <input type="text" name="username" />
+                        <span className="input">
+                            <input type="text" name="username" />
+                        </span>
                     </p>
                     <p className="field">
                         <label htmlFor="password">Password </label>
-                        <input type="password" name="password" />
+                        <span className="input">
+                            <input type="password" name="password" />
+                        </span>
                     </p>
                     <p className="field">
                         <label htmlFor="repeatPass">Repeat Password </label>
-                        <input type="password" name="repeatPass" />
+                        <span className="input">
+                            <input type="password" name="repeatPass" />
+                        </span>
                     </p>
-                    <span style={{'color':'red'}}>
+                    <span style={ { 'color': 'red' } }>
 
-                    { errMsg ? errMsg.map((el, index) => <p key={ index}>{ el }</p> ) : <p></p>}
+                        { errMsg ? errMsg.map((el, index) => <p key={ index }>{ el }</p>) : <p></p> }
                     </span>
 
                     <span>

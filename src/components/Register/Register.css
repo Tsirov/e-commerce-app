@@ -10,7 +10,8 @@
   background-size: cover; 
   display: flex; 
   align-items: center;
-  justify-content: center;  
+  justify-content: center;
+    
 }
 
 .register-wrapper{
@@ -25,15 +26,42 @@
 }
 
 .register-wrapper > form{
-    display: flex;
+    display: block;
     flex-wrap: wrap;
 }
+.field {
+    display: block;
+	position: relative;
+	align-items: center;
+}
 
-.register-wrapper > form > input{
+.field .input {
+	display: flex;
+	position: relative;
+	align-items: center;
+}
+
+/* .field .input:after {
+	display: block;
+	content: '';
+} */
+
+form label{
+    display: block;
+    font-weight: bold;
+}
+
+.field > input{
     flex: 1;
     min-width: 40%;
     margin: 10px 10px 8px 0px;
     padding: 10px; 
+
+	/* flex: 1 1 auto;
+	padding: 0.8rem;
+	outline: none;
+	z-index: 2;
+	order: 2; */
 }
 
 .register-wrapper > form > span{

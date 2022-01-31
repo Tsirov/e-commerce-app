@@ -61,22 +61,29 @@ router.post('/login', body('email').isLength({ min: 1 }).withMessage('Please fil
             if (errors.length > 0) {
                 const message = errors.map(e => e.msg);
                 res.status(405).json(message);
+                return;
             };
             const user = await User.findOne({ email: req.body.email });
-            
-            !user && res.status(405).json("Wrong  email!");
 
+            if (!user) {
+                const err = ["Wrong  email!"];
+                res.status(405).json(err);
+                return;
+            }
+            
             const hashedPassword = CryptoJS.AES.decrypt(
                 user.password,
                 "password"
             );
 
+            console.log('ORIGIN password',hashedPassword.toString(CryptoJS.enc.Utf8));
             const originalPassword = hashedPassword.toString(CryptoJS.enc.Utf8);
 
             const inputPassword = req.body.password;
 
             if (originalPassword != inputPassword) {
-                res.status(405).json("Wrong Password");
+                res.status(405).json(["Wrong Password"]);
+                return;
             };
 
             const token = generateToken(user)
@@ -86,6 +93,7 @@ router.post('/login', body('email').isLength({ min: 1 }).withMessage('Please fil
 
 
         } catch (err) {
+            console.log(err);
             res.status(500).json(err);
         }
 

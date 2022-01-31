@@ -26,20 +26,29 @@ const Header = () => {
 
     }
 
-    let userNavigation = (
-        <div id="user">
-            <Link style={ { "color": "white" } } to="/cart">
-                <Badge badgeContent={ quantity } color="primary">
-                    <ShoppingCartOutlined />
-                </Badge>
-            </Link>
-            <span style={ { "marginLeft": "10px" } }></span >
-            <span>Welcome, { user.username }</span>
-            <Link className="nav-button" to="/myProducts">My Products</Link>
-            <Link className="nav-button" to="/create">Add Product</Link>
-            <Link onClick={ logoutHandler } className="nav-button" to="/">Logout</Link>
-        </div>
-    );
+    let userNavigation = () => {
+        if (user) {
+            return (
+                <div id="user">
+                <Link style={ { "color": "white" } } to="/cart">
+                    <Badge badgeContent={ quantity } color="primary">
+                        <ShoppingCartOutlined />
+                    </Badge>
+                </Link>
+                <span style={ { "marginLeft": "10px" } }></span >
+                <span>Welcome, { user.username }</span>
+                <Link className="nav-button" to="/myProducts">My Products</Link>
+                <Link className="nav-button" to="/create">Add Product</Link>
+                <Link onClick={ logoutHandler } className="nav-button" to="/">Logout</Link>
+            </div>  
+
+            )
+           
+        } 
+    }
+       
+        
+    
 
     return (
 
@@ -60,7 +69,7 @@ const Header = () => {
                     {/* <i className="em em-search"></i> */ }
 
                     { user.email
-                        ? userNavigation
+                        ? userNavigation()
                         : guestNavigation
                     }
                 </section>

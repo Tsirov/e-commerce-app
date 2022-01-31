@@ -40,7 +40,7 @@ const ProductPage = () => {
 
     const deleteHandler = async (id) => {
         try {
-            const data = await fetch(`http://localhost:5000/api/products/${id}`, {
+            await fetch(`http://localhost:5000/api/products/${id}`, {
                 method: 'DELETE',
                 headers: { 'Content-Type': 'application/json' }
             });
@@ -52,6 +52,11 @@ const ProductPage = () => {
     }
         
     const clickAddHandler = () => {
+        
+        if (!user) {
+            navigate('/login');
+        }
+
         
         dispatch(addProduct({ ...product, quantity}));
     }

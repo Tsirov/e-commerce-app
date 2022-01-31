@@ -1,14 +1,21 @@
 import { AiOutlineShoppingCart, AiOutlineSearch, AiOutlineHeart } from "react-icons/ai";
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { addProduct } from '../../../redux/cartRedux';
 import './Product.css';
 
 const Product = ({ element }) => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const user = useSelector(state => state.user.currentUser)
 
     const clickAddHandler = () => {
+
+        if (Object.keys(user).length <=0 ) {
+         navigate('/login')   
+        }
         dispatch(addProduct({ ...element, quantity: 1}));
     }
 
