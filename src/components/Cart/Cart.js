@@ -55,12 +55,13 @@ const Cart = () => {
                                 </div>
                                 <div className="cart-product-price-details" >
                                     <div className="cart-product-counter">
+                                    <button onClick={ () => clickHandler('decrease', index) } >
+                                            <AiOutlineMinus />
+                                        </button>
+                                        
+                                        <div>{ product.quantity }</div>
                                         <button onClick={ () => clickHandler('increase', index) }>
                                             <AiOutlinePlus />
-                                        </button>
-                                        <div>{ product.quantity }</div>
-                                        <button onClick={ () => clickHandler('decrease', index) } >
-                                            <AiOutlineMinus />
                                         </button>
                                     </div>
                                     <div className="cart-product-final-price">$ { product.price * product.quantity }</div>

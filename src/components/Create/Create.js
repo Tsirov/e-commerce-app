@@ -28,7 +28,7 @@ const Create = () => {
             ownerId: user._id
 
         }
-        console.log(product);
+
         try {
             const data = await fetch('http://localhost:5000/api/products', {
                 method: 'POST',
@@ -36,7 +36,6 @@ const Create = () => {
                 body: JSON.stringify(product)
             });
             if (data.status === 405) {
-                console.log('405',data, '++');
                 const result = await data.json();
                 setErrMsg(result)
             } else {
@@ -48,7 +47,6 @@ const Create = () => {
             console.log(err);
         }
     }
-    console.log('errmsg',errMsg);
 
     return (
         < >
@@ -56,7 +54,7 @@ const Create = () => {
                 Create
             </h1>
             <div className="create-form">
-                <form onSubmit={ submitHandler } action="/create" method="POST">
+                <form onSubmit={ submitHandler } >
 
                     <label htmlFor="name">
                         Name
@@ -73,7 +71,7 @@ const Create = () => {
                     <label htmlFor="difficulty">
                         Collection: { element }
                     </label>
-                    <select name="collection" defaultValue="winter">
+                    <select name="collection" defaultValue="default">
                         <option value="default" disabled>
                             Choose a collection:
                         </option>
@@ -104,6 +102,9 @@ const Create = () => {
                         <option value="t-shirt">
                             T-shirt
                         </option>
+                        <option value="new">
+                            New
+                        </option>
                     </select>
 
                     <label htmlFor="difficulty">
@@ -130,6 +131,9 @@ const Create = () => {
                         </option>
                         <option value="green">
                             Green
+                        </option>
+                        <option value="pink">
+                            Pink
                         </option>
                     </select>
 

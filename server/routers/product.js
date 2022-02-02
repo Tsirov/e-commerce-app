@@ -25,7 +25,8 @@ router.post("/",
             };
             const newProduct = req.body
             const productDB = new Product(newProduct);
-            await productDB.save();
+            const savedProduct = await productDB.save();
+            res.status(200).json(savedProduct);
 
         } catch (error) {
             if (error.name === 'ValidationError') {
@@ -53,13 +54,11 @@ router.put("/:id",
     }),
 
     async (req, res) => {
-        console.log('PUT',req.body);
         try {
 
             const { errors } = validationResult(req);
             if (errors.length > 0) {
                 const message = errors.map(e => e.msg);
-                console.log('errors',req.params.id,message);
                 res.status(405).json(message);
                 return;
             };
@@ -94,7 +93,6 @@ router.delete("/:id",  async (req, res) => {
 
 //GET PRODUCT
 router.get("/find/:id", async (req, res) => {
-    console.log('FIND');
     try {
         const product = await Product.findById(req.params.id);
         res.status(200).json(product);
@@ -105,11 +103,9 @@ router.get("/find/:id", async (req, res) => {
 
 //GET ALL PRODUCTS
 router.get("/", async (req, res) => {
-    console.log('GET request');
-    console.log(req.query);
+  
     const qNew = req.query.new;
     const qCategory = req.query.category;
-    console.log(qNew, qCategory);
     try {
         let products;
 
@@ -138,7 +134,6 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/owner/:id", async (req, res) => {
-    console.log('owner');
     try {
         const product = await Product.find({ ownerId: req.params.id });
         res.status(200).json(product);

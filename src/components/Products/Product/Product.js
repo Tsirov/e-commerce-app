@@ -33,9 +33,9 @@ const Product = ({ element }) => {
 
                     </div>
                 </Link>
-                <div className="product-icon">
+                {/* <div className="product-icon">
                     <AiOutlineHeart />
-                </div>
+                </div> */}
             </div>
             <div className="product-user">
                 <span> Price: { element.price } lv.  Size: { element.size } </span>

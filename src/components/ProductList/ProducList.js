@@ -33,6 +33,7 @@ const ProductList = () => {
                         <option value="Blue">Blue</option>
                         <option value="Yellow">Yellow</option>
                         <option value="Green">Green</option>
+                        <option value="Pink">Pink</option>
                     </select>
                     <select onChange={filterHandler} name="size" id=""  defaultValue={'DEFAULT'}>
                     <option value="DEFAULT" disabled>Size</option>
