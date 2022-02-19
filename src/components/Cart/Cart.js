@@ -21,7 +21,7 @@ const Cart = () => {
     }
 
     return (
-        <div style={ { padding: "20px" } } className="cart-wrapper">
+        <div style={ { padding: "20px"} } className="cart-wrapper">
             <h1 >YOUR BAG</h1>
             <p >If you bay something over $ 100  the shipping will be free.</p>
             <div className="cart-top">

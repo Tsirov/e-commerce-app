@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import { Badge } from "@material-ui/core";
 import { ShoppingCartOutlined } from "@material-ui/icons";
+import MenuIcon from '@mui/icons-material/Menu';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { logoutSuccess } from '../../redux/userRedux';
@@ -9,6 +11,8 @@ import './Header.css';
 
 const Header = () => {
     const dispatch = useDispatch();
+    const [clickMenu, setClickMenu] = useState(false);
+    const [displayView, setDisplayView] = useState('none');
     let user = useSelector(state => state.user.currentUser);
 
     const quantity = useSelector(state => state.cart.quantity);
@@ -29,35 +33,47 @@ const Header = () => {
     let userNavigation = () => {
         if (user) {
             return (
-                <div id="user">
-                <Link style={ { "color": "white" } } to="/cart">
-                    <Badge badgeContent={ quantity } color="primary">
-                        <ShoppingCartOutlined />
-                    </Badge>
-                </Link>
-                <span style={ { "marginLeft": "10px" } }></span >
-                <span>Welcome, { user.username }</span>
-                <Link className="nav-button" to="/myProducts">My Products</Link>
-                <Link className="nav-button" to="/create">Add Product</Link>
-                <Link onClick={ logoutHandler } className="nav-button" to="/">Logout</Link>
-            </div>  
+                <article className="navbar-user-dashboard">
+                    <Link style={ { "color": "white" } } to="/cart">
+                        <Badge badgeContent={ quantity } color="primary" className="navbar-car">
+                            <ShoppingCartOutlined />
+                        </Badge>
+                    </Link>
+                    <span style={{marginRight: '20px'}}>Welcome, { user.username }</span>
+                    <article className="navbar-menu">
+                        <MenuIcon onClick={ () => displayView === 'none' ? setDisplayView('flex') : setDisplayView('none') } />
+                        <div className="user-tablet" style={ displayView === 'none' ? {display: 'none'} : {display: 'flex'}}>
+                            <span style={ { "marginLeft": "10px" } } ></span >
+                            <Link className="nav-button" to="/myProducts" onClick={ () => setDisplayView('none') }>My Products</Link>
+                            <Link className="nav-button" to="/create" onClick={() => setDisplayView('none') } >Add Product</Link>
+                            <Link onClick={ logoutHandler } className="nav-button" to="/" onClick={ () => setDisplayView('none') }>Logout</Link>
+                        </div>
+                    </article>
+                    <div id="user">
+
+                        <Link className="nav-button" to="/myProducts">My Products</Link>
+                        <Link className="nav-button" to="/create">Add Product</Link>
+                        <Link onClick={ logoutHandler } className="nav-button" to="/">Logout</Link>
+                    </div>
+                </article>
 
             )
-           
-        } 
+
+        }
     }
-       
-        
-    
+
+
+
 
     return (
 
         <header id="site-header">
             <nav className="navbar">
+
                 <section className="navbar-dashboard">
-                    <div>
+                    <div className='header-content'>
                         <Link to="/">Dashboard</Link>
-                        <Link style={ { 'marginLeft': '120px' } } to="/products">All Products</Link>
+                        <Link to="/products">All Products</Link>
                     </div>
 
                     {/* <div className="search-div">

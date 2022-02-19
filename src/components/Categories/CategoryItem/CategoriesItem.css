@@ -44,3 +44,11 @@
     color: rgb(0, 0, 0);
     font-weight: bold;
 }
+
+@media all and (max-width: 600px){
+    .categories-item-info > h1{
+        font-size: 22px;  
+    }
+
+    
+}

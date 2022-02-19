@@ -17,3 +17,9 @@
     display: flex;
     justify-content: space-between;
 }
+
+@media all and (max-width: 600px){
+    .product-list-filter{
+        flex-direction: column;
+    }
+}

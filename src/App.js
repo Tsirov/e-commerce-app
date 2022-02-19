@@ -24,43 +24,44 @@ function App() {
     return (
 
         <div className="container">
-            <Header />
-            <Routes>
-                <Route path="/" element={
-                    <>
-                        <Slider />
-                        <Categories />
-                        <Newsletter />
-                    </>
-                } />
+            <main style={{'minHeight': '95vh'}}>
+                <Header />
+                <Routes>
+                    <Route path="/" element={
+                        <>
+                            <Slider />
+                            <Categories />
+                            <Newsletter />
+                        </>
+                    } />
 
-                <Route path="/products/*" exact="true" element={ <ProductList /> } />
+                    <Route path="/products/*" exact="true" element={ <ProductList /> } />
 
-                { user && Object.keys(user).length > 0 ?
-                    <>
-                        <Route path="/create" element={ <Create /> } />
-                        <Route path="/myProducts" element={ <MyProducts /> } />
-                        <Route path="/edit/*" element={ <Edit /> } />
-                        <Route path="/cart" element={ <Cart /> } />
-                        <Route path="/register" element={ <Navigate replace to="/" /> } />
-                        <Route path="/login" element={ <Navigate replace to="/" /> } />
+                    { user && Object.keys(user).length > 0 ?
+                        <>
+                            <Route path="/create" element={ <Create /> } />
+                            <Route path="/myProducts" element={ <MyProducts /> } />
+                            <Route path="/edit/*" element={ <Edit /> } />
+                            <Route path="/cart" element={ <Cart /> } />
+                            <Route path="/register" element={ <Navigate replace to="/" /> } />
+                            <Route path="/login" element={ <Navigate replace to="/" /> } />
 
-                    </>
-                    :
-                    <>
-                        <Route path="/create" element={ <Navigate replace to="/login" /> } />
-                        <Route path="/myProducts" element={ <Navigate replace to="/login" /> } />
-                        <Route path="/edit/*" element={ <Navigate replace to="/login" /> } />
-                        <Route path="/cart" element={ <Navigate replace to="/login" /> } />
-                        <Route path="/register" element={ <Register /> } />
-                        <Route path="/login" element={ <Login /> } />
-                    </>
-                }
+                        </>
+                        :
+                        <>
+                            <Route path="/create" element={ <Navigate replace to="/login" /> } />
+                            <Route path="/myProducts" element={ <Navigate replace to="/login" /> } />
+                            <Route path="/edit/*" element={ <Navigate replace to="/login" /> } />
+                            <Route path="/cart" element={ <Navigate replace to="/login" /> } />
+                            <Route path="/register" element={ <Register /> } />
+                            <Route path="/login" element={ <Login /> } />
+                        </>
+                    }
 
-                <Route path="/product/:id" exact="true" element={ <ProductPage /> } />
-
-                <Route path="/404" element={ <ServerIsNotWorking /> } />
-            </Routes>
+                    <Route path="/product/:id" exact="true" element={ <ProductPage /> } />
+                    <Route path="/404" element={ <ServerIsNotWorking /> } />
+                </Routes>
+            </main>
             <footer id="site-footer">
                 <p>@My said</p>
             </footer>

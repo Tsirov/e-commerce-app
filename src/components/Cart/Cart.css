@@ -112,3 +112,34 @@ cart-wrapper > h1 {
 .aaa {
     text-align: center;
 }
+
+@media all and (max-width: 1024px) {
+    .cart-top > span {
+        padding: 0 10px;
+    }
+}
+
+@media all and (max-width: 600px) {
+    .cart-bottom {
+        flex-direction: column;
+    }
+
+    .cart-product-details {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cart-product{
+        flex-direction: column;
+    }
+
+    .cart-product-hr{
+    background-color: black;
+    border: none;
+    height: 2px;
+    }
+
+    .cart-details > span{
+        padding: 5px 0;
+    }
+}

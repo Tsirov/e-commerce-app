@@ -21,7 +21,7 @@ const Product = ({ element }) => {
 
     return (
         <div className='product-container'>
-            <span className='product-category'>Category:{ element.category }</span>
+            <span className='product-category'>Category: { element.category }</span>
             <img className="product-img" src={ element.img } alt="" />
             <div className="product-info" >
                 <div onClick={clickAddHandler} className="product-icon">
