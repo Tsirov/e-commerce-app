@@ -21,7 +21,7 @@ const Cart = () => {
     }
 
     return (
-        <div style={ { padding: "20px"} } className="cart-wrapper">
+        <div style={ { padding: "20px" } } className="cart-wrapper">
             <h1 >YOUR BAG</h1>
             <p >If you bay something over $ 100  the shipping will be free.</p>
             <div className="cart-top">
@@ -47,7 +47,17 @@ const Cart = () => {
                                         <span>
                                             <b>ID:</b>{ product._id }
                                         </span>
-                                        <div className="cart-product-color" style={ { backgroundColor: product.color } }></div>
+                                        <span className="cart-product-color-wrapper">
+                                            <span>
+                                                Color:
+                                            </span>
+                                            { product.color.toLowerCase() == 'white'
+                                                ? <span>White</span>
+                                                : <div className="cart-product-color" style={ { backgroundColor: product.color } }></div>
+                                            }
+
+
+                                        </span>
                                         <span>
                                             <b>Size</b>{ product.size }
                                         </span>
@@ -55,10 +65,10 @@ const Cart = () => {
                                 </div>
                                 <div className="cart-product-price-details" >
                                     <div className="cart-product-counter">
-                                    <button onClick={ () => clickHandler('decrease', index) } >
+                                        <button onClick={ () => clickHandler('decrease', index) } >
                                             <AiOutlineMinus />
                                         </button>
-                                        
+
                                         <div>{ product.quantity }</div>
                                         <button onClick={ () => clickHandler('increase', index) }>
                                             <AiOutlinePlus />

@@ -54,6 +54,15 @@ cart-wrapper > h1 {
     justify-content: space-around;
 }
 
+.cart-product-color-wrapper{
+    display: flex;
+}
+
+.cart-product-color-wrapper > span{
+    padding-right: 10px;
+}
+
+
 .cart-product-color {
     width: 20px;
     height: 20px;

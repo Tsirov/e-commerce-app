@@ -13,18 +13,23 @@ const Product = ({ element }) => {
 
     const clickAddHandler = () => {
 
-        if (Object.keys(user).length <=0 ) {
-         navigate('/login')   
+        if (Object.keys(user).length <= 0) {
+            navigate('/login')
         }
-        dispatch(addProduct({ ...element, quantity: 1}));
+        dispatch(addProduct({ ...element, quantity: 1 }));
     }
 
     return (
         <div className='product-container'>
-            <span className='product-category'>Category: { element.category }</span>
+            <span className='product-category'>Category:
+                { element.category.toLowerCase() == 'white'
+                    ? <span>White</span>
+                    : <span> { element.category }</span>
+                }
+               </span>
             <img className="product-img" src={ element.img } alt="" />
             <div className="product-info" >
-                <div onClick={clickAddHandler} className="product-icon">
+                <div onClick={ clickAddHandler } className="product-icon">
                     <AiOutlineShoppingCart />
                 </div>
                 <Link to={ `/product/${element._id}` }  >

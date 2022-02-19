@@ -77,10 +77,15 @@ const ProductPage = () => {
 
                     <div className='product-page-filter-container'>
                         <div>
-                            <span>Color</span>
-                            <div className='product-page-color' style={ { "backgroundColor": (product.color && product.color.toLowerCase()) } }></div>
-                            {/* <div className='product-page-color' style={ { "backgroundColor": "darkblue" } }></div>
-                            <div className='product-page-color' style={ { "backgroundColor": "gray" } }></div> */}
+                            <span>Color:  </span>
+                            <span>
+                                { product.color.toLowerCase() === 'white'
+                                    ? <span>White</span>
+                                    :<div className='product-page-color' style={ { "backgroundColor": (product.color && product.color.toLowerCase()) } }></div>
+                                }
+                            </span>
+                            
+                           
                         </div>
                         <div>
                             <span>Size: { product.size && product.size.toUpperCase() }</span>
