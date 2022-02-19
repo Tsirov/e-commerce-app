@@ -22,11 +22,16 @@ const Register = () => {
         };
 
         try {
-            const data = await fetch('http://localhost:5000/api/auth/register', {
+            const data = await fetch('https://my-server-app-react.herokuapp.com/api/auth/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(body)
             });
+            // const data = await fetch('http://localhost:5000/api/auth/register', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify(body)
+            // });
             if (data.status === 405) {
                 const result = await data.json();
                 setErrMsg(result)

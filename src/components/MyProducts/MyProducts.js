@@ -11,7 +11,8 @@ const MyProducts = () => {
     useEffect(() => {
         const getElement = async () => {
             try {
-                const data = await fetch(`http://localhost:5000/api/products/owner/${user._id}`);
+                const data = await fetch(`https://my-server-app-react.herokuapp.com/api/products/owner/${user._id}`);
+                // const data = await fetch(`http://localhost:5000/api/products/owner/${user._id}`);
                 const result = await data.json();
                 setProducts(result)
 

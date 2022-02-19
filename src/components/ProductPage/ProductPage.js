@@ -20,7 +20,8 @@ const ProductPage = () => {
     useEffect(() => {
         const getProduct = async () => {
             try {
-                const data = await fetch('http://localhost:5000/api/products/find/' + id);
+                const data = await fetch('https://my-server-app-react.herokuapp.com/api/products/find/' + id);
+                // const data = await fetch('http://localhost:5000/api/products/find/' + id);
                 const result = await data.json();
                 setProduct(result);
             } catch (e) {
@@ -40,10 +41,14 @@ const ProductPage = () => {
 
     const deleteHandler = async (id) => {
         try {
-            await fetch(`http://localhost:5000/api/products/${id}`, {
+            await fetch(`https://my-server-app-react.herokuapp.com/api/products/${id}`, {
                 method: 'DELETE',
                 headers: { 'Content-Type': 'application/json' }
             });
+            // await fetch(`http://localhost:5000/api/products/${id}`, {
+            //     method: 'DELETE',
+            //     headers: { 'Content-Type': 'application/json' }
+            // });
 
             navigate('/');
         } catch (e) {

@@ -15,11 +15,18 @@ const Newsletter = () => {
 
     const clickHandler = async () => {
         try {
-            const data = await fetch('http://localhost:5000/api/email', {
+            const data = await fetch('https://my-server-app-react.herokuapp.com/api/email', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({email})
-        })
+            })
+            // try {
+            //     const data = await fetch('http://localhost:5000/api/email', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify({email})
+            // })
+    
 
         console.log(data);
             if (data.status === 405) {

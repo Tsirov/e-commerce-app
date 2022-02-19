@@ -10,7 +10,8 @@ const Products = ({ cat, filters, sort }) => {
     useEffect(() => {
         const getProducts = async () => {
             try {
-                const data = await fetch(cat ? `http://localhost:5000/api/products?category=${cat}` : `http://localhost:5000/api/products`);
+                const data = await fetch(cat ? `https://my-server-app-react.herokuapp.com/products?category=${cat}` : `https://my-server-app-react.herokuapp.com/api/products`);
+                // const data = await fetch(cat ? `http://localhost:5000/api/products?category=${cat}` : `http://localhost:5000/api/products`);
                 let result = await data.json();
                 setProducts(result)
             } catch (err) {

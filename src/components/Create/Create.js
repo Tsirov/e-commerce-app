@@ -30,11 +30,16 @@ const Create = () => {
         }
 
         try {
-            const data = await fetch('http://localhost:5000/api/products', {
+            const data = await fetch('https://my-server-app-react.herokuapp.com/api/products', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(product)
             });
+            // const data = await fetch('http://localhost:5000/api/products', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify(product)
+            // });
             if (data.status === 405) {
                 const result = await data.json();
                 setErrMsg(result)
