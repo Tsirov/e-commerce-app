@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const authRoute = require("./routers/auth");
 const productRoute = require("./routers/product");
 const userEmail = require("./routers/email");
+const stripeRoute = require("./routers/stripe");
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use(cookieParser());
 app.use('/api/auth', authRoute);
 app.use("/api/products", productRoute);
 app.use("/api/email", userEmail);
+app.use("/api/ckeckout", stripeRoute);
 
 
 app.listen(5000, () => {

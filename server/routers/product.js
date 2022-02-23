@@ -106,6 +106,9 @@ router.get("/", async (req, res) => {
   
     const qNew = req.query.new;
     const qCategory = req.query.category;
+    console.log(req.query);
+                                
+    console.log('111111111',qNew,qCategory);
     try {
         let products;
 

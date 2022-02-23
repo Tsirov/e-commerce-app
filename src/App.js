@@ -14,6 +14,7 @@ import Cart from './components/Cart';
 import Create from './components/Create';
 import MyProducts from './components/MyProducts';
 import Edit from './components/Edit';
+import Seccess from './components/Success/Success';
 import ServerIsNotWorking from './components/404/ServerIsNotWorking';
 import { useSelector } from 'react-redux';
 
@@ -36,6 +37,7 @@ function App() {
                     } />
 
                     <Route path="/products/*" exact="true" element={ <ProductList /> } />
+                    <Route path="/success" exact="true" element={ <Seccess /> } />
 
                     { user && Object.keys(user).length > 0 ?
                         <>

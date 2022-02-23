@@ -3,15 +3,15 @@ import { useEffect, useState } from 'react';
 import Product from './Product';
 import './Products.css';
 
-const Products = ({ cat, filters, sort }) => {
+const Products = ({ category, filters, sort }) => {
     let [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
 
     useEffect(() => {
         const getProducts = async () => {
             try {
-                const data = await fetch(cat ? `https://my-server-app-react.herokuapp.com/products?category=${cat}` : `https://my-server-app-react.herokuapp.com/api/products`);
-                // const data = await fetch(cat ? `http://localhost:5000/api/products?category=${cat}` : `http://localhost:5000/api/products`);
+                // const data = await fetch(category ? `https://my-server-app-react.herokuapp.com/products?category=${category}` : `https://my-server-app-react.herokuapp.com/api/products`);
+                const data = await fetch(category ? `http://localhost:5000/api/products?category=${category}` : `http://localhost:5000/api/products`);
                 let result = await data.json();
                 setProducts(result)
             } catch (err) {
@@ -20,7 +20,7 @@ const Products = ({ cat, filters, sort }) => {
         }
         getProducts();
 
-    }, []);
+    }, [category]);
 
     useEffect(() => {
         if (Object.keys(filters).length == 0) {

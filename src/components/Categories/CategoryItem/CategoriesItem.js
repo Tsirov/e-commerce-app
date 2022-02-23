@@ -9,7 +9,7 @@ const CategoriesItem = ({ element }) => {
             <img src={ element.img } alt="" />
             <div className="categories-item-info">
                 <h1 > { element.title }</h1>
-                <Link to={`/products/${element.category}`} >
+                <Link to={`/products?category=${element.category}`} >
                 <button>SHOP NOW</button>
                 </Link>
             </div>
