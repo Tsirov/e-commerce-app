@@ -36,13 +36,19 @@ const Cart = () => {
                 tokenId: stripeToken.id,
                 amount: (cart.total < 100 ? cart.total + 5.9 : cart.total) * 100
             };
+            
 
             try {
-                const response = await fetch('http://localhost:5000/api/ckeckout/payment', {
+                const response = await fetch('https://my-server-app-react.herokuapp.com/api/ckeckout/payment', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json'},
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(body)
-                })
+                });
+                // const response = await fetch('http://localhost:5000/api/ckeckout/payment', {
+                //     method: 'POST',
+                //     headers: { 'Content-Type': 'application/json' },
+                //     body: JSON.stringify(body)
+                // });
                 dispatch(clearProduct());
                 navigate('/success')
             } catch (err) {

@@ -35,6 +35,13 @@ function App() {
                             <Newsletter />
                         </>
                     } />
+                     <Route path="/e-commerce-app/" element={
+                        <>
+                            <Slider />
+                            <Categories />
+                            <Newsletter />
+                        </>
+                    } />
 
                     <Route path="/products/*" exact="true" element={ <ProductList /> } />
                     <Route path="/success" exact="true" element={ <Seccess /> } />

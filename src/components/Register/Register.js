@@ -81,11 +81,11 @@ const Register = () => {
                         { errMsg ? errMsg.map((el, index) => <p key={ index }>{ el }</p>) : <p></p> }
                     </span>
 
-                    <span>
+                    <div>
                         By creating an account, I consent to the processing of my personal
                         data in accordance with the
                         <b> PRIVACY POLICY</b>
-                    </span>
+                    </div>
                     <button>CREATE</button>
                 </form>
             </div>
