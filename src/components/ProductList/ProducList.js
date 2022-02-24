@@ -7,16 +7,12 @@ import { useState} from 'react';
 
 const ProductList = () => {
     const location = useLocation();
-    console.log('1');
     let cat = location.pathname.split('/')[2];
-    console.log(location);
-    console.log(cat);
     const [filters, setFilters] = useState({});
     const [sort, setSort] = useState('newest');
 
     if (!cat) {
         cat = location.search.split('=')[1];
-        console.log('in if statement', cat);
     }
 
     const filterHandler = (e) => {
