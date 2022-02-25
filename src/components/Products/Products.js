@@ -6,21 +6,27 @@ import './Products.css';
 const Products = ({ category, filters, sort }) => {
     let [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
+    const [page, setPage] = useState(1);
+    const [maxPage, setMaxPage] = useState(1);
 
     useEffect(() => {
         const getProducts = async () => {
             try {
-                const data = await fetch(category ? `https://my-server-app-react.herokuapp.com/products?category=${category}` : `https://my-server-app-react.herokuapp.com/api/products`);
-                // const data = await fetch(category ? `http://localhost:5000/api/products?category=${category}` : `http://localhost:5000/api/products`);
+                // const data = await fetch(category ? `https://my-server-app-react.herokuapp.com/products?category=${category}` : `https://my-server-app-react.herokuapp.com/api/products`);
+                const data = await fetch(category ? `http://localhost:5000/api/products?category=${category}&p=${page}` : `http://localhost:5000/api/products?p=${page}`);
                 let result = await data.json();
-                setProducts(result)
+                if (result.maxPage > maxPage) {
+                    setMaxPage(result.maxPage);
+                }
+
+                setProducts(result.products)
             } catch (err) {
                 console.log(err);
             }
         }
         getProducts();
 
-    }, [category]);
+    }, [category, page]);
 
     useEffect(() => {
         if (Object.keys(filters).length == 0) {
@@ -55,13 +61,37 @@ const Products = ({ category, filters, sort }) => {
         }
     }, [sort]);
 
-    return (
-        <div className='categories-products'>
-            { filteredProducts.map((product) => (
-                <Product key={ product._id } element={ product } />
-            ))
+    const pageHandler = (event) => {
+        if (event === 'previous') {
+            if (page <= 1) {
+                return;
+            } else {
+                setPage(page - 1);
             }
-        </div>
+        } else if (event === 'next') {
+            setPage(page + 1);
+
+
+        }
+    }
+    
+    return (
+        <section className="products-categories-wrapper ">
+            <article className='categories-products'>
+                { filteredProducts.map((product) => (
+                    <Product key={ product._id } element={ product } />
+                ))
+                }
+
+            </article>
+            <article className='categories-products-buttons'>
+                { page <= 1 ? '' : <button onClick={ () => pageHandler('previous') }>Previous</button> }
+                <p>{ page }</p>
+                { maxPage <= page ? '' : <button onClick={ () => pageHandler('next') }>Next</button> }
+            </article>
+            
+        </section>
+
     );
 }
 

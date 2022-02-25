@@ -106,7 +106,11 @@ router.get("/", async (req, res) => {
   
     const qNew = req.query.new;
     const qCategory = req.query.category;
-    console.log(req.query);
+    const page = req.query.p;
+    const limitItem = 3;
+    const startIndex = (page - 1) * limitItem;
+    const endIndex = (page) * limitItem;
+    console.log('page',page);
                                 
     console.log('111111111',qNew,qCategory);
     try {
@@ -130,7 +134,15 @@ router.get("/", async (req, res) => {
             // console.log(products);
         }
 
-        res.status(200).json(products);
+       const maxPage = Math.ceil( products.length /limitItem);
+        products = products.slice(startIndex, endIndex);
+        const result = {
+            maxPage: maxPage,
+            products: products
+        }
+
+
+        res.status(200).json(result);
     } catch (err) {
         res.status(500).json(err);
     }
