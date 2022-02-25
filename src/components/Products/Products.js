@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import { BallTriangle } from  'react-loader-spinner'
 
 import Product from './Product';
 import './Products.css';
@@ -12,8 +14,8 @@ const Products = ({ category, filters, sort }) => {
     useEffect(() => {
         const getProducts = async () => {
             try {
-                // const data = await fetch(category ? `https://my-server-app-react.herokuapp.com/products?category=${category}` : `https://my-server-app-react.herokuapp.com/api/products`);
-                const data = await fetch(category ? `http://localhost:5000/api/products?category=${category}&p=${page}` : `http://localhost:5000/api/products?p=${page}`);
+                const data = await fetch(category ? `https://my-server-app-react.herokuapp.com/products?category=${category}&p=${page}` : `https://my-server-app-react.herokuapp.com/api/productsp=${page}`);
+                // const data = await fetch(category ? `http://localhost:5000/api/products?category=${category}&p=${page}` : `http://localhost:5000/api/products?p=${page}`);
                 let result = await data.json();
                 if (result.maxPage > maxPage) {
                     setMaxPage(result.maxPage);
@@ -74,23 +76,36 @@ const Products = ({ category, filters, sort }) => {
 
         }
     }
-    
+
     return (
         <section className="products-categories-wrapper ">
-            <article className='categories-products'>
-                { filteredProducts.map((product) => (
-                    <Product key={ product._id } element={ product } />
-                ))
-                }
+            { products.length === 0
+                ?
+                <article className='products-categories-loader'>
+                    <h1>Loading</h1>
+                    <BallTriangle />
+                </article>
+                
+                :
+                <section>
+                    <article className='categories-products'>
+                        { filteredProducts.map((product) => (
+                            <Product key={ product._id } element={ product } />
+                        ))
+                        }
 
-            </article>
-            <article className='categories-products-buttons'>
-                { page <= 1 ? '' : <button onClick={ () => pageHandler('previous') }>Previous</button> }
-                <p>{ page }</p>
-                { maxPage <= page ? '' : <button onClick={ () => pageHandler('next') }>Next</button> }
-            </article>
-            
+                    </article>
+                    <article className='categories-products-buttons'>
+                        { page <= 1 ? '' : <button onClick={ () => pageHandler('previous') }>Previous</button> }
+                        <p>{ page }</p>
+                        { maxPage <= page ? '' : <button onClick={ () => pageHandler('next') }>Next</button> }
+                    </article>
+
+                </section >
+            }
         </section>
+
+
 
     );
 }

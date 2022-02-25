@@ -21,3 +21,11 @@
 .categories-products-buttons button:hover{
     cursor: pointer;
 }
+
+.products-categories-loader{
+    display: flex;
+    justify-content: center;
+}
+.products-categories-loader h1{
+    font-size: 30px;
+}
