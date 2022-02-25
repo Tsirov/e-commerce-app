@@ -14,7 +14,7 @@ const Products = ({ category, filters, sort }) => {
     useEffect(() => {
         const getProducts = async () => {
             try {
-                const data = await fetch(category ? `https://my-server-app-react.herokuapp.com/products?category=${category}&p=${page}` : `https://my-server-app-react.herokuapp.com/api/productsp=${page}`);
+                const data = await fetch(category ? `https://my-server-app-react.herokuapp.com/products?category=${category}&p=${page}` : `https://my-server-app-react.herokuapp.com/api/products?&p=${page}`);
                 // const data = await fetch(category ? `http://localhost:5000/api/products?category=${category}&p=${page}` : `http://localhost:5000/api/products?p=${page}`);
                 let result = await data.json();
                 if (result.maxPage > maxPage) {
