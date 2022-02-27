@@ -46,7 +46,7 @@ const Header = () => {
                             <span style={ { "marginLeft": "10px" } } ></span >
                             <Link className="nav-button" to="/myProducts" onClick={ () => setDisplayView('none') }>My Products</Link>
                             <Link className="nav-button" to="/create" onClick={() => setDisplayView('none') } >Add Product</Link>
-                            <Link onClick={ logoutHandler } className="nav-button" to="/" onClick={ () => setDisplayView('none') }>Logout</Link>
+                            <Link  className="nav-button" to="/" onClick={ () => { logoutHandler(); setDisplayView('none') }  }>Logout</Link>
                         </div>
                     </article>
                     <div id="user">

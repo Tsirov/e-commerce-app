@@ -5,17 +5,19 @@ import { BallTriangle } from  'react-loader-spinner'
 import Product from './Product';
 import './Products.css';
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+
 const Products = ({ category, filters, sort }) => {
     let [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [page, setPage] = useState(1);
     const [maxPage, setMaxPage] = useState(1);
-
+    
     useEffect(() => {
         const getProducts = async () => {
             try {
-                const data = await fetch(category ? `https://my-server-app-react.herokuapp.com/products?category=${category}&p=${page}` : `https://my-server-app-react.herokuapp.com/api/products?&p=${page}`);
-                // const data = await fetch(category ? `http://localhost:5000/api/products?category=${category}&p=${page}` : `http://localhost:5000/api/products?p=${page}`);
+                const data = await fetch(category ? `${BASE_URL}/products?category=${category}&p=${page}` : `${BASE_URL}/api/products?&p=${page}`);
                 let result = await data.json();
                 if (result.maxPage > maxPage) {
                     setMaxPage(result.maxPage);
@@ -34,6 +36,7 @@ const Products = ({ category, filters, sort }) => {
         if (Object.keys(filters).length == 0) {
             setFilteredProducts(products)
         } else {
+
             setFilteredProducts(
                 products.filter((item) => {
                     return Object.entries(filters).every(([key, value]) => {
@@ -47,10 +50,11 @@ const Products = ({ category, filters, sort }) => {
 
     useEffect(() => {
         if (sort === "newest") {
-            setFilteredProducts((prev) =>
-                [...prev].sort((a, b) =>
-                    new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-                )
+            setFilteredProducts((prev) => {
+                
+                return [...prev].sort((a, b) =>new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+            }
+                
             );
         } else if (sort === "low to hight") {
             setFilteredProducts((prev) =>
@@ -61,7 +65,7 @@ const Products = ({ category, filters, sort }) => {
                 [...prev].sort((a, b) => b.price - a.price)
             );
         }
-    }, [sort]);
+    }, [sort,products]);
 
     const pageHandler = (event) => {
         if (event === 'previous') {

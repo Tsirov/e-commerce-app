@@ -4,6 +4,8 @@ import { useLocation, useNavigate} from 'react-router-dom';
 
 import './Edit.css';
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 const Edit = () => {
     const location = useLocation();
     const id = location.pathname.split('/')[2];
@@ -22,8 +24,7 @@ const Edit = () => {
     useEffect(() => {
         const findProduct = async () => {
             try {
-                const data = await fetch(`https://my-server-app-react.herokuapp.com/api/products/find/${id}`);
-                // const data = await fetch(`http://localhost:5000/api/products/find/${id}`);
+                const data = await fetch(`${BASE_URL}/api/products/find/${id}`);
                 if (data.status === 405) {
                     const result = await data.json();
                     setErrMsg(result)
@@ -66,16 +67,12 @@ const Edit = () => {
         }
 
         try {
-            const data = await fetch(`https://my-server-app-react.herokuapp.com/api/products/${product._id}`, {
+            const data = await fetch(`${BASE_URL}/api/products/${product._id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(newProduct)
             });
-            // const data = await fetch(`http://localhost:5000/api/products/${product._id}`, {
-            //     method: 'PUT',
-            //     headers: { 'Content-Type': 'application/json' },
-            //     body: JSON.stringify(newProduct)
-            // });
+            
             if (data.status === 405) {
                 console.log('405',data, '++');
                 const result = await data.json();

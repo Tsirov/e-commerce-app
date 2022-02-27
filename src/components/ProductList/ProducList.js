@@ -51,7 +51,7 @@ const ProductList = () => {
                 </div>
                 <div className="product-list">
                     <span>Sort Products:</span>
-                    <select onChange={ (e) => setSort(e.target.value) } name="featured" id="" defaultValue="Newest">
+                    <select onChange={ (e) => setSort(e.target.value) } name="featured" id="" defaultValue={"Newest"}>
                         <option value="newest">Newest</option>
                         <option value="low to hight">Prise: Low to Hight</option>
                         <option value="hight to low">Prise: Hight to Low</option>

@@ -1,7 +1,5 @@
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 
-
-
 import Header from './components/Header';
 import Slider from './components/Slider';
 import Categories from './components/Categories';

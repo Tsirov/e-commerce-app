@@ -9,6 +9,7 @@ import { decreaseProduct, increaseProduct,clearProduct } from '../../redux/cartR
 import './Cart.css';
 
 const KEY = process.env.REACT_APP_PUBLIC_KEY;
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const Cart = () => {
     const dispatch = useDispatch();
@@ -39,16 +40,12 @@ const Cart = () => {
             
 
             try {
-                const response = await fetch('https://my-server-app-react.herokuapp.com/api/ckeckout/payment', {
+                const response = await fetch(`${BASE_URL}/api/ckeckout/payment`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(body)
                 });
-                // const response = await fetch('http://localhost:5000/api/ckeckout/payment', {
-                //     method: 'POST',
-                //     headers: { 'Content-Type': 'application/json' },
-                //     body: JSON.stringify(body)
-                // });
+               
                 dispatch(clearProduct());
                 navigate('/success')
             } catch (err) {
@@ -139,19 +136,29 @@ const Cart = () => {
                     </div>
                     <div className="cart-product-summary-item" >
                         <span style={ { fontWeight: 600 } }>Total</span>
-                        <span style={ { fontWeight: 600 } }>$ { cart.total < 100 ? cart.total + 5.9 : cart.total }</span>
+                        <span style={ { fontWeight: 600 } }>
+                            { cart.total <= 0
+                                ? '0.00'
+                                :<span >$ { cart.total < 100 ? cart.total + 5.9 : cart.total }</span>
+                            }
+                        </span>
+                        
                     </div>
 
                     <StripeCheckout
                         name='My Said'
                         billingAddress
                         shippingAddress
-                        description={ `Your totl is ${cart.total < 100 ? cart.total + 5.9 : cart.total} лв.` }
+                        description={ `Your totl is ${cart.total < 100 ? cart.total + 5.9 : cart.total} $.` }
                         amont={ (cart.total < 100 ? cart.total + 5.9 : cart.total) * 100 }
                         token={ onToken }
                         stripeKey={ KEY }
                     >
-                        <button>CHECKOUT NOW</button>
+                        { cart.total <= 0
+                            ? <button disabled >CHECKOUT NOW</button>
+                            : <button >CHECKOUT NOW</button>
+                        }
+                        
                     </StripeCheckout>
 
                 </div>

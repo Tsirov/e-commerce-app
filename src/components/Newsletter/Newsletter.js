@@ -4,6 +4,9 @@ import { useState } from 'react';
 
 import './Newsletter.css';
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+
 const Newsletter = () => {
     const [email, setEmail] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
@@ -15,26 +18,19 @@ const Newsletter = () => {
 
     const clickHandler = async () => {
         try {
-            const data = await fetch('https://my-server-app-react.herokuapp.com/api/email', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({email})
+            const data = await fetch(`${BASE_URL}/api/email`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email })
             })
-            // try {
-            //     const data = await fetch('http://localhost:5000/api/email', {
-            //     method: 'POST',
-            //     headers: { 'Content-Type': 'application/json' },
-            //     body: JSON.stringify({email})
-            // })
-    
 
-        console.log(data);
+            console.log(data);
             if (data.status === 405) {
-            console.log('405');
-            let msg = await data.json();
-            setErrorMsg(msg)
-        }
-        setEmail('')
+                console.log('405');
+                let msg = await data.json();
+                setErrorMsg(msg)
+            }
+            setEmail('')
         } catch (err) {
             console.log(err);
         }
@@ -44,11 +40,11 @@ const Newsletter = () => {
         <div className="newsletter-container">
             <h1>Newsletter</h1>
             <div className="newsletter-description"> Get timely updates from your favorite products.</div>
-            { errorMsg ? <span style={{'color':'red'}}>{ errorMsg }</span> : <span></span>}
+            { errorMsg ? <span style={ { 'color': 'red' } }>{ errorMsg }</span> : <span></span> }
             <div className="newsletter-input-container">
-                <input onChange={changeHandler} placeholder="Your email"  value={email }/>
-                <button onClick={clickHandler}>
-                    <AiOutlineSend/>
+                <input onChange={ changeHandler } placeholder="Your email" value={ email } />
+                <button onClick={ clickHandler }>
+                    <AiOutlineSend />
                 </button>
             </div>
         </div>

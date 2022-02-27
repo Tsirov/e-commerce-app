@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 
 import './MyProducts.css';
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 const MyProducts = () => {
     const [products, setProducts] = useState([]);
     const user = useSelector(state => state.user.currentUser)
@@ -11,8 +13,7 @@ const MyProducts = () => {
     useEffect(() => {
         const getElement = async () => {
             try {
-                const data = await fetch(`https://my-server-app-react.herokuapp.com/api/products/owner/${user._id}`);
-                // const data = await fetch(`http://localhost:5000/api/products/owner/${user._id}`);
+                const data = await fetch(`${BASE_URL}/api/products/owner/${user._id}`);
                 const result = await data.json();
                 setProducts(result)
 
